@@ -2,10 +2,10 @@
 //:
 //: Use `func` to declare a function. Call a function by following its name with a list of arguments in parentheses. Use `->` to separate the parameter names and types from the function’s return type.
 //:
-func greet(person: String, day: String) -> String {
-    return "Hello \(person), today is \(day)."
+func greet(person: String, lunch: String) -> String {
+    return "Hello \(person), today's lunch is \(lunch)."
 }
-greet(person: "Bob", day: "Tuesday")
+greet(person: "Bob", lunch: "Pizza")
 
 //: - Experiment:
 //: Remove the `day` parameter. Add a parameter to include today’s lunch special in the greeting.
@@ -81,8 +81,11 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 //: Functions are actually a special case of closures: blocks of code that can be called later. The code in a closure has access to things like variables and functions that were available in the scope where the closure was created, even if the closure is in a different scope when it is executed—you saw an example of this already with nested functions. You can write a closure without a name by surrounding code with braces (`{}`). Use `in` to separate the arguments and return type from the body.
 //:
 numbers.map({ (number: Int) -> Int in
-    let result = 3 * number
-    return result
+    if (number % 2 == 0) {
+        return 3 * number
+    } else {
+        return 0
+    }
 })
 
 //: - Experiment:
