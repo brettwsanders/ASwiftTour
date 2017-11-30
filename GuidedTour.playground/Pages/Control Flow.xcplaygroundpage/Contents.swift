@@ -20,10 +20,12 @@ print(teamScore)
 var optionalString: String? = "Hello"
 print(optionalString == nil)
 
-var optionalName: String? = "John Appleseed"
+var optionalName: String? = nil
 var greeting = "Hello!"
 if let name = optionalName {
     greeting = "Hello, \(name)"
+} else {
+    greeting = "Hello!"
 }
 
 //: - Experiment:
@@ -66,14 +68,16 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
+var largestKind: String? = nil
 for (kind, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
+            largestKind = kind
         }
     }
 }
-print(largest)
+print(largest, largestKind!)
 
 //: - Experiment:
 //: Add another variable to keep track of which kind of number was the largest, as well as what that largest number was.
