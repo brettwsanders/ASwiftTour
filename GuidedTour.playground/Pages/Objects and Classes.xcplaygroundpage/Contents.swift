@@ -73,6 +73,7 @@ class Circle: NamedShape {
     init(radius: Double, name: String) {
         self.radius = radius
         super.init(name: name)
+        numberOfSides = 0
     }
     
     func area() -> Double {
@@ -107,7 +108,7 @@ class EquilateralTriangle: NamedShape {
         get {
              return 3.0 * sideLength
         }
-        set {
+        set(newValue) {
             sideLength = newValue / 3.0
         }
     }
@@ -154,6 +155,7 @@ print(triangleAndSquare.square.sideLength)
 print(triangleAndSquare.triangle.sideLength)
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
+print(triangleAndSquare.triangle.name)
 
 //: When working with optional values, you can write `?` before operations like methods, properties, and subscripting. If the value before the `?` is `nil`, everything after the `?` is ignored and the value of the whole expression is `nil`. Otherwise, the optional value is unwrapped, and everything after the `?` acts on the unwrapped value. In both cases, the value of the whole expression is an optional value.
 //:
