@@ -51,9 +51,19 @@ print(result3, "should be 7")
 //:
 //: Use the `init?(rawValue:)` initializer to make an instance of an enumeration from a raw value. It returns either the enumeration case matching the raw value or `nil` if there is no matching `Rank`.
 //:
-if let convertedRank = Rank(rawValue: 3) {
-    let threeDescription = convertedRank.simpleDescription()
+if let convertedRank = Rank(rawValue: 1) {
+    let ace = convertedRank.simpleDescription()
 }
+if let convertedRank = Rank(rawValue: 11) {
+    let eleven = convertedRank.simpleDescription()
+}
+if let convertedRank = Rank(rawValue: 0) {
+    let zero = convertedRank.simpleDescription()
+}
+if let convertedRank = Rank(rawValue: 15) {
+    let fifteen = convertedRank.simpleDescription()
+}
+
 
 //: The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
 //:
