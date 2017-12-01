@@ -67,8 +67,9 @@ if let convertedRank = Rank(rawValue: 15) {
 
 //: The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
 //:
-enum Suit {
-    case spades, hearts, diamonds, clubs
+enum Suit: Int {
+    case spades = 1
+    case hearts, diamonds, clubs
     func simpleDescription() -> String {
         switch self {
             case .spades:
@@ -162,9 +163,26 @@ struct Card {
     func simpleDescription() -> String {
         return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
     }
+    func createDeck() -> [Card] {
+        var n = 1
+        var deck = [Card]()
+        // loop through each suit
+        while let s = Suit(rawValue: n) {
+            // loop through each rank
+            var m = 1
+            while let r = Rank(rawValue: m) {
+                // add suit-rank card to deck
+                deck.append(Card(rank: r, suit: s))
+                m += 1
+            }
+            n += 1
+        }
+        return deck
+    }
 }
 let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+let deck = threeOfSpades.createDeck()
 
 //: - Experiment:
 //: Add a method to `Card` that creates a full deck of cards, with one card of each combination of rank and suit.
