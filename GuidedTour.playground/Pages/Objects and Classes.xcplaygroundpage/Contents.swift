@@ -4,8 +4,12 @@
 //:
 class Shape {
     var numberOfSides = 0
+    let name = "ShapeyShaper"
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
+    }
+    func numberOfSidesSquared() -> Int {
+        return numberOfSides * numberOfSides
     }
 }
 
@@ -17,6 +21,7 @@ class Shape {
 var shape = Shape()
 shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
+var sidesSquared = shape.numberOfSidesSquared()
 
 //: This version of the `Shape` class is missing something important: an initializer to set up the class when an instance is created. Use `init` to create one.
 //:
@@ -61,6 +66,28 @@ class Square: NamedShape {
 let test = Square(sideLength: 5.2, name: "my test square")
 test.area()
 test.simpleDescription()
+
+class Circle: NamedShape {
+    var radius: Double
+    
+    init(radius: Double, name: String) {
+        self.radius = radius
+        super.init(name: name)
+    }
+    
+    func area() -> Double {
+        let pi = 3.14
+        return pi * (radius * radius)
+    }
+    
+    override func simpleDescription() -> String {
+        return "A circle with radius \(radius)."
+    }
+}
+
+let smallCircle = Circle(radius: 1.5, name: "Smallcle")
+smallCircle.area()
+smallCircle.simpleDescription()
 
 //: - Experiment:
 //: Make another subclass of `NamedShape` called `Circle` that takes a radius and a name as arguments to its initializer. Implement an `area()` and a `simpleDescription()` method on the `Circle` class.
