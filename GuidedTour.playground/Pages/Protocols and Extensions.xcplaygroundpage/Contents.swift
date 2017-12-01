@@ -19,6 +19,8 @@ class SimpleClass: ExampleProtocol {
 var a = SimpleClass()
 a.adjust()
 let aDescription = a.simpleDescription
+a.adjust()
+a.simpleDescription
 
 struct SimpleStructure: ExampleProtocol {
      var simpleDescription: String = "A simple structure"
@@ -29,6 +31,32 @@ struct SimpleStructure: ExampleProtocol {
 var b = SimpleStructure()
 b.adjust()
 let bDescription = b.simpleDescription
+
+enum Limb: ExampleProtocol {
+    case leg, arm
+    
+    var simpleDescription: String {
+        switch self {
+            case .leg:
+                return "A simple leg"
+            case .arm:
+                return "A simple arm"
+        }
+    }
+    mutating func adjust() {
+        switch self {
+            case .leg:
+                self = .arm
+            case .arm:
+                self = .leg
+        }
+    }
+}
+
+var someLimb = Limb.leg
+someLimb.simpleDescription
+someLimb.adjust()
+someLimb.simpleDescription
 
 //: - Experiment:
 //: Write an enumeration that conforms to this protocol.
