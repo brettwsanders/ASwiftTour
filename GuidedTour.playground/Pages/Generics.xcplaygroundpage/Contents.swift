@@ -23,16 +23,17 @@ possibleInteger = .some(100)
 
 //: Use `where` right before the body to specify a list of requirements—for example, to require the type to implement a protocol, to require two types to be the same, or to require a class to have a particular superclass.
 //:
-func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Array<T.Iterator.Element>
     where T.Iterator.Element: Equatable, T.Iterator.Element == U.Iterator.Element {
+    var inCommonElements = Array<T.Iterator.Element>()
     for lhsItem in lhs {
         for rhsItem in rhs {
             if lhsItem == rhsItem {
-                return true
+                inCommonElements.append(lhsItem)
             }
         }
     }
-   return false
+   return inCommonElements
 }
 anyCommonElements([1, 2, 3], [3])
 
