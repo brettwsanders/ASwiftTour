@@ -123,17 +123,30 @@ j.getMonthNum()
 //:
 enum ServerResponse {
     case result(String, String)
+    case owner(String)
     case failure(String)
 }
 
 let success = ServerResponse.result("6:00 am", "8:09 pm")
+let owner = ServerResponse.owner("Brett")
 let failure = ServerResponse.failure("Out of cheese.")
 
 switch success {
     case let .result(sunrise, sunset):
         print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+    case let .owner(name):
+        print("Server owner name is \(name)")
     case let .failure(message):
         print("Failure...  \(message)")
+}
+
+switch owner {
+case let .result(sunrise, sunset):
+    print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+case let .owner(name):
+    print("Server owner name is \(name)")
+case let .failure(message):
+    print("Failure...  \(message)")
 }
 
 //: - Experiment:
