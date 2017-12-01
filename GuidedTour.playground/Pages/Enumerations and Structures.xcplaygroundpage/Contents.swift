@@ -23,6 +23,26 @@ enum Rank: Int {
 }
 let ace = Rank.ace
 let aceRawValue = ace.rawValue
+let king = Rank.king
+let kingRawValue = king.rawValue
+let seven = Rank.seven
+let sevenRawValue = seven.rawValue
+
+func maxCard(card1: Rank, card2: Rank) -> Int {
+    if (card1.rawValue > card2.rawValue) {
+        return card1.rawValue
+    } else {
+        return card2.rawValue
+    }
+}
+
+var result1: Int =  maxCard(card1: ace, card2: king)
+var result2: Int =  maxCard(card1: king, card2: seven)
+var result3: Int =  maxCard(card1: seven, card2: ace)
+
+print(result1, "should be 13")
+print(result2, "should be 13")
+print(result3, "should be 7")
 
 //: - Experiment:
 //: Write a function that compares two `Rank` values by comparing their raw values.
