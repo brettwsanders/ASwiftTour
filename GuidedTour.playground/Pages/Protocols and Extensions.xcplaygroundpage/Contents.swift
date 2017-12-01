@@ -75,6 +75,22 @@ extension Int: ExampleProtocol {
  }
 print(7.simpleDescription)
 
+extension Double {
+    var absoluteValue: Double {
+        if (self < 0) {
+            return self * -1
+        } else {
+            return self
+        }
+    }
+}
+
+let gpa: Double = 4.0
+gpa.absoluteValue
+
+let temp: Double = -34.2
+temp.absoluteValue
+
 //: - Experiment:
 //: Write an extension for the `Double` type that adds an `absoluteValue` property.
 //:
