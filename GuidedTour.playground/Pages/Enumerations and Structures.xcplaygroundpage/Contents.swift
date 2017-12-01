@@ -81,9 +81,38 @@ enum Suit {
                 return "clubs"
         }
     }
+    func color() -> String {
+        switch self {
+        case .spades, .clubs:
+            return "black"
+        case .hearts, .diamonds:
+            return "red"
+        default:
+            return "error"
+        }
+    }
 }
+
 let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
+let heartsColor = hearts.color()
+
+let clubs = Suit.clubs
+let clubsColor = clubs.color()
+
+enum Month: Int {
+    case jan = 1
+    case feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
+    func getMonthNum() -> Int {
+        return self.rawValue
+    }
+}
+
+let d = Month.dec
+let j = Month.jan
+d.getMonthNum()
+j.getMonthNum()
+
 
 //: - Experiment:
 //: Add a `color()` method to `Suit` that returns “black” for spades and clubs, and returns “red” for hearts and diamonds.
